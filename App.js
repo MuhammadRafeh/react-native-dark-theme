@@ -4,15 +4,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Screen } from 'react-native-screens';
 import Navigator from './components/Navigation/Navigator';
+import { ContextProvider } from './contexts/ContextProvider';
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <Navigator style={{ flex: 1 }} />
-      <StatusBar style="auto" />
-    </SafeAreaProvider>
+    <ContextProvider>
+      <SafeAreaProvider>
+        <Navigator style={{ flex: 1 }} />
+        <StatusBar style="auto" />
+      </SafeAreaProvider>
+    </ContextProvider>
   );
-} 
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

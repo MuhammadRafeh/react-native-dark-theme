@@ -11,3 +11,11 @@ export const COLORS = {
 
     listBorder: '#cccccc',
 }
+
+export const blackTheme = {
+    bodyBackground: 'black',
+    fontColor: 'white',
+    success: '#55EFC4',
+    danger: '#ff7676',
+    listBorder: '#cccccc',
+}

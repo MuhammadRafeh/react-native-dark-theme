@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { COLORS } from '../constants/colors';
+import View from '../components/UiComponents/View';
 
 export default function LayoutBody(props) {
     const scrollViewRef = useRef();

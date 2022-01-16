@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Switch } from 'react-native';
 import { COLORS } from '../../constants/colors';
+import { useAppContext } from '../../contexts/ContextProvider';
 import LayoutBody from '../../layouts/LayoutBody';
 import LayoutHeader from '../../layouts/LayoutHeader';
 import LayoutMain from '../../layouts/LayoutMain';
@@ -14,12 +15,19 @@ export default function SettingsMain({ navigation }) {
 
     const { signIn, signOut } = useContext(AppContextService);
 
+    const { isDarkMode, setIsDarkMode } = useAppContext();
+
     const logout = async () => {
         signOut();
     }
+
     const scanqr = async () => {
         UserService.resetUserData();
         navigation.navigate('SettingsQrScanner');
+    }
+
+    const handleDarkModeSwitch = () => {
+        setIsDarkMode(!isDarkMode);
     }
 
     useEffect(() => {
@@ -42,10 +50,24 @@ export default function SettingsMain({ navigation }) {
                             onPress: logout
                         }} />
                     </View>
+                    <View style={styles.switch}>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ ...styles.textCenter, marginLeft: 20 }}>Dark Mode:</Text>
+                        </View>
+                        <View style={{ flex: 1, alignItems: 'center' }}>
+                            <Switch
+                                trackColor={{
+                                    true: 'grey',
+                                    false: '#c2d1c6'
+                                }}
+                                thumbColor={isDarkMode ? '#444a46' : '#adbab1'}
+                                value={isDarkMode}
+                                onValueChange={handleDarkModeSwitch} />
+                        </View>
+                    </View>
                 </View>
             </LayoutBody>
         </LayoutMain>
-
     );
 }
 
@@ -63,5 +85,10 @@ const styles = StyleSheet.create({
         padding: 20,
         paddingTop: 40,
         paddingBottom: 40,
+    },
+    switch: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     }
 });
