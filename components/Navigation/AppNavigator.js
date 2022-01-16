@@ -8,10 +8,13 @@ import WTHistoryNavigator from './WTHistoryNavigator';
 import SettingsNavigator from './SettingsNavigator';
 import { COLORS } from '../../constants/colors';
 import mapTest from '../WorkTime/MapTest';
+import { useAppContext } from '../../contexts/ContextProvider';
 
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
+    const { isDarkMode } = useAppContext();
+    
     return (
 
         <Tab.Navigator sceneContainerStyle={styles.container} screenOptions={({ route }) => ({

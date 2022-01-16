@@ -15,21 +15,20 @@ const View = props => {
         }
 
     }, [isDarkMode])
-
-    const backColor = useAnimatedStyle(() => {
+    // props.header ? 'rgb(0, 0, 0)' : 'rgb(16,16,20)')
+    const backgroundColor = useAnimatedStyle(() => {
         const backgroundColor = interpolateColor(
             color.value,
             [0, 1],
-            ['white', 'black']
+            ['#ffffff', props.header ? '#000000' : '#101014']
         );
-
         return {
             backgroundColor,
         };
     });
 
     return (
-        <Animated.View {...props} style={[props.style, backColor, { shadowColor: props.header ? isDarkMode ? 'white' : 'black' : undefined }]}>
+        <Animated.View {...props} style={[props.style, backgroundColor, { shadowColor: props.header ? isDarkMode ? 'white' : 'black' : undefined }]}>
             {props.children}
         </Animated.View>
     )
