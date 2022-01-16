@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
     const { isDarkMode } = useAppContext();
-    
+
     return (
 
         <Tab.Navigator sceneContainerStyle={styles.container} screenOptions={({ route }) => ({
@@ -22,7 +22,8 @@ export default function AppNavigator() {
                 const icons = {
                     Dash: 'clock',
                     WTHistory: 'rotate-ccw',
-                    Settings: 'settings'
+                    Settings: 'settings',
+                    maptest: 'map-pin'
                 };
                 return (
                     <FeatherIcon name={icons[route.name]} size={size} color={focused ? COLORS.success : COLORS.fontColor} />
@@ -30,11 +31,14 @@ export default function AppNavigator() {
             },
 
             headerShown: false,
-            tabBarInactiveTintColor: COLORS.fontColor,
+            tabBarInactiveTintColor: isDarkMode ? 'white' : COLORS.fontColor,
             tabBarActiveTintColor: COLORS.success,
             tabBarStyle: {
-                elevation: 10
-            }
+                elevation: 10,
+                backgroundColor: isDarkMode ? 'black' : 'white',
+                borderTopColor: isDarkMode ? '#2d2d2e' : '#e1e3e6',
+                shadowColor: isDarkMode ? 'white' : 'black'
+            },
 
         })}
         >
