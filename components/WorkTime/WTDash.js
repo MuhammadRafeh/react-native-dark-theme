@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import WorkTimeService from '../../services/WorkTimeService';
 import TimeDataList from './partials/TimeDataList';
@@ -9,7 +9,7 @@ import LayoutMain from '../../layouts/LayoutMain';
 import LayoutHeader from '../../layouts/LayoutHeader';
 import LayoutBody from '../../layouts/LayoutBody';
 import PillButton from '../UiComponents/PillButton';
-
+import Text from '../UiComponents/Text';
 
 export default function WTDash({ route, navigation }) {
 
@@ -36,7 +36,7 @@ export default function WTDash({ route, navigation }) {
     const changeState = async () => {
         await WorkTimeService.setTime().then(d => getCurrentDay()).catch(e => null);
     }
-    
+
     return (
         <LayoutMain>
             <LayoutHeader title={"Hallo " + userData.firstname + "!"}>

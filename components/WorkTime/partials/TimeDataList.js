@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
+import Text from '../../UiComponents/Text';
 
 // Liste Kommen/Gehen des uebergebenen Tages
 export default function TimeDataList(props) {

@@ -26,7 +26,7 @@ const View = props => {
 
     const interpolateColor = color.interpolate({
         inputRange: [0, 1],
-        outputRange: ['rgb(0, 0, 0)', 'rgb(255, 255, 255)']
+        outputRange: [props.header ? 'rgb(0, 0, 0)' : 'rgb(16,16,20)', 'rgb(255, 255, 255)']
     });
 
     const animatedStyle = {
@@ -34,7 +34,7 @@ const View = props => {
     }
 
     return (
-        <Animated.View style={[props.style, animatedStyle]}>
+        <Animated.View {...props} style={[props.style, animatedStyle, { shadowColor: props.header ? isDarkMode ? 'white' : 'black' : undefined }]}>
             {props.children}
         </Animated.View>
     )

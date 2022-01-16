@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, View, Text, Switch } from 'react-native';
+import { StyleSheet, View, Switch } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { useAppContext } from '../../contexts/ContextProvider';
 import LayoutBody from '../../layouts/LayoutBody';
@@ -8,7 +8,7 @@ import LayoutMain from '../../layouts/LayoutMain';
 import AppContextService from '../../services/AppContextService';
 import UserService from '../../services/UserService';
 import PillButton from '../UiComponents/PillButton';
-
+import Text from '../UiComponents/Text';
 
 export default function SettingsMain({ navigation }) {
     const [userData, setUData] = useState({});

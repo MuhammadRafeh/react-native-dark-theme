@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image, Platform } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import FeatherIcon from '../components/Icons/FeatherIcon';
 import { COLORS } from '../constants/colors';
+import Text from '../components/UiComponents/Text';
+import View from '../components/UiComponents/View';
 
 export default function LayoutHeader(props) {
 
@@ -18,10 +20,10 @@ export default function LayoutHeader(props) {
     }, [props]);
 
     return (
-        <View style={(props.modal !== undefined && props.modal) ? styles.topContainerModal : styles.topContainer}>
+        <View header style={(props.modal !== undefined && props.modal) ? styles.topContainerModal : styles.topContainer}>
             {(props.backButton !== undefined && props.backButton) ?
                 <TouchableOpacity onPress={() => props.navigation.goBack()} style={styles.backButton}>
-                    <View>
+                    <View header>
                         <FeatherIcon name="arrow-left" size={30} color={COLORS.fontColor} />
                     </View>
                 </TouchableOpacity>

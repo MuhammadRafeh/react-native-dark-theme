@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import WorkTimeService from '../../../services/WorkTimeService';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { COLORS } from '../../../constants/colors';
+import Text from '../../UiComponents/Text';
 
 // Liste Kommen/Gehen des uebergebenen Tages
 export default function MonthDataList(props) {
@@ -9,10 +10,10 @@ export default function MonthDataList(props) {
     const [monthData, setMonthData] = useState([]);
 
     const dateSelected = (item) => {
-        
+
         if (item.no_data)
             return;
-        props.navigation.navigate('Day', { date: item.day.defaultString()});
+        props.navigation.navigate('Day', { date: item.day.defaultString() });
 
     }
 
@@ -33,7 +34,7 @@ export default function MonthDataList(props) {
                 <View style={{ flexDirection: 'row', flex: 5 }}>
                     <Text style={styles.textLeft}>{item.day.weekday()}, {item.day.readable()}</Text>
                     <Text style={styles.textMiddle}>{item.has_public_holiday ? 'Feiertag' : item.has_vacation ? 'Urlaub' : ''}</Text>
-                    <Text style={[styles.textRight, { color: item.diff == 0 ? COLORS.fontColor : !item.is_negative ? COLORS.success : COLORS.danger }]}>
+                    <Text style={{ ...styles.textRight, color: item.diff == 0 ? COLORS.fontColor : !item.is_negative ? COLORS.success : COLORS.danger }}>
                         {item.diffReadable}
                     </Text>
                 </View>
